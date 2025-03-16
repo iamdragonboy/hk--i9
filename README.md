@@ -29,13 +29,13 @@ bash <(curl -s https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install
 
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh)
-````
+```
 Join Our Discord Server to get Activation Key : https://discord.gg/r2vmR5jbXt
 
 *Paid Version Also Available!*
 
 
-# Made By Notlol95 ``Don't Change Credit or I will stop to update``
+# Made By Gamerzhacker.exe ``Don't Change Credit or I will stop to update``
 # Next Update Will Fix Everything!
 
 ### ✨️ ``Features`` ✨️
