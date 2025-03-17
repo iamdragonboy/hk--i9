@@ -25,8 +25,7 @@ python3 bot.py
 
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh)```
-
+bash <(curl -s https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh) ```
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh)
 ```
