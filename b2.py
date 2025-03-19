@@ -26,7 +26,7 @@ intents.message_content = False
 bot = commands.Bot(command_prefix='/', intents=intents)
 client = docker.from_env()
 
-whitelist_ids = {"1128161197766746213"}  # Replace with actual user IDs
+whitelist_ids = {"1258646055860568094"}  # Replace with actual user IDs
 
 # Utility Functions
 def add_to_database(userid, container_name, ssh_command):
