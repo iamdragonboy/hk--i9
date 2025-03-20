@@ -26,9 +26,9 @@ python3 bot.py
 
 ```
 bash <(curl -s https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh) ```
-```
+    ```
 bash <(wget -qO- https://raw.githubusercontent.com/Gamerzhacker/hk-i9/main/install.sh)
-```
+ ```
 Join Our Discord Server to get Activation Key : https://discord.gg/r2vmR5jbXt
 
 *Paid Version Also Available!*
@@ -39,7 +39,7 @@ Join Our Discord Server to get Activation Key : https://discord.gg/r2vmR5jbXt
 
 ### ✨️ ``Features`` ✨️
 
-``SYSTEMD`` 
+``SYSTEMD``
 ``ADMIN COMMANDS`` MORE ADDING SOON
 ``CAN INSTALL ALL THINGS`` REAL VPS
 ``EASY TO SETUP``
@@ -55,10 +55,10 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| u22.04  | :white_check_mark: |
-| d12  | :white_check_mark:    |
-| u20.04 | :white_check_mark:  |
-| d11   | :white_check_mark:   |
+| u22.04  |‼️ |
+| d12  | ‼️   |
+| u20.04 | ‼️ |
+| d11   | ‼️   |
 
 ## Reporting a Vulnerability
 
