@@ -16,7 +16,7 @@ import requests
 # Set Your Bot Token gay
 TOKEN = ''
 RAM_LIMIT = '2g' #Set Your Own Ram How Much You Want To Give Your Users
-SERVER_LIMIT = 2 #you can change it!
+SERVER_LIMIT = 20 #you can change it!
 database_file = 'database.txt'
 
 intents = discord.Intents.default()
