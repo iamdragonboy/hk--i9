@@ -447,7 +447,7 @@ def generate_random_port():
     return random.randint(1025, 65535)
 
 async def create_server_task(interaction):
-    await interaction.response.send_message(embed=discord.Embed(description="### Creating Instance, This takes a few seconds. Powered by [hk-i9](<https://discord.gg/ENUwKzB6>)", color=0x00ff00))
+    await interaction.response.send_message(embed=discord.Embed(description="### 🧊 Creating Your Vps Waiting, Powerd by Root@Gh.dev.exe", color=0x00ff00))
     userid = str(interaction.user.id)
     if count_user_servers(userid) >= SERVER_LIMIT:
         await interaction.followup.send(embed=discord.Embed(description="```Error: Instance Limit-reached```", color=0xff0000))
@@ -476,7 +476,7 @@ async def create_server_task(interaction):
     if ssh_session_line:
         await interaction.user.send(embed=discord.Embed(description=f"### Successfully created Instance\nSSH Session Command: ```{ssh_session_line}```\nOS: Ubuntu 22.04\nPassword: root", color=0x00ff00))
         add_to_database(userid, container_id, ssh_session_line)
-        await interaction.followup.send(embed=discord.Embed(description="### Instance created successfully. Check your DMs for details.", color=0x00ff00))
+        await interaction.followup.send(embed=discord.Embed(description="### 🔍Successfully Installed Vps, Check your Dm Details. ", color=0x00ff00))
     else:
         await interaction.followup.send(embed=discord.Embed(description="### Something went wrong or the Instance is taking longer than expected. If this problem continues, Contact Support.", color=0xff0000))
         subprocess.run(["docker", "kill", container_id])
@@ -544,7 +544,7 @@ async def execute_command(command):
     stdout, stderr = await process.communicate()
     return stdout.decode(), stderr.decode()
 
-PUBLIC_IP = '138.68.79.95'
+PUBLIC_IP = '222.98.68.29'
 
 async def capture_output(process, keyword):
     while True:
