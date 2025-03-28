@@ -620,6 +620,13 @@ async def remove_server(interaction: discord.Interaction, container_name: str):
     except subprocess.CalledProcessError as e:
         await interaction.response.send_message(embed=discord.Embed(description=f"Error removing instance: {e}", color=0xff0000))
 
+@bot.tree.command(name="delvps", description="delete Vps User an Instance (admin only)")
+@app_commands.describe(userid,container_name="The name/ssh-command of your Instance")
+async def remove_server(interaction: discord.Interaction, userid container_name: str):
+    await interaction.response.defer()
+    userid = str(interaction.user.id)
+    container_id = get_container_id_from_database(userid, userid container_name)
+
 
 @bot.tree.command(name="help", description="Shows the help message")
 async def help_command(interaction: discord.Interaction):
@@ -636,6 +643,7 @@ async def help_command(interaction: discord.Interaction):
     embed.add_field(name="/bal", value="Check Your Balance.", inline=False)
     embed.add_field(name="/renew", value="Renew The VPS.", inline=False)
     embed.add_field(name="/earncredit", value="earn the credit.", inline=False)
+    embed.add_field(name="/delvps", value="delete vps (admin only)", inline=False)
     await interaction.response.send_message(embed=embed)
 
 
