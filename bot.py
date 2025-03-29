@@ -482,9 +482,13 @@ async def create_server_task(interaction):
         subprocess.run(["docker", "kill", container_id])
         subprocess.run(["docker", "rm", container_id])
 
-@bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
+@bot.tree.command(name="Vps-Deploy", description="Creates a new Instance with Ubuntu 22.04")
 async def deploy_ubuntu(interaction: discord.Interaction):
     await create_server_task(interaction)
+    userid = str(interaction.user.id)
+    if userid not in whitelist_ids:
+        await interaction.response.send_message(embed=discord.Embed(description="You do not have permission to use this command.", color=0xff0000))
+        return
 
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
 #async def deploy_ubuntu(interaction: discord.Interaction):
@@ -620,13 +624,26 @@ async def remove_server(interaction: discord.Interaction, container_name: str):
     except subprocess.CalledProcessError as e:
         await interaction.response.send_message(embed=discord.Embed(description=f"Error removing instance: {e}", color=0xff0000))
 
-@bot.tree.command(name="delvps", description="delete Vps User an Instance (admin only)")
-@app_commands.describe(userid,container_name="The name/ssh-command of your Instance")
-async def remove_server(interaction: discord.Interaction, userid container_name: str):
+@bot.tree.command(name="delvps", description="Remove an Instance")
+@app_commands.describe(container_name="The name/ssh-command of your Instance")
+async def remove_server(interaction: discord.Interaction, container_name: str):
     await interaction.response.defer()
     userid = str(interaction.user.id)
-    container_id = get_container_id_from_database(userid, userid container_name)
+    container_id = get_container_id_from_database(userid, container_name)
 
+    if not container_id:
+        await interaction.response.send_message(embed=discord.Embed(description="### No Instance found for your user with that name.", color=0xff0000))
+        return
+
+    try:
+        subprocess.run(["docker", "stop", container_id], check=True)
+        subprocess.run(["docker", "rm", container_id], check=True)
+
+        remove_from_database(container_id)
+
+        await interaction.response.send_message(embed=discord.Embed(description=f"Instance '{container_name}' delete vps successfully.", color=0x00ff00))
+    except subprocess.CalledProcessError as e:
+        await interaction.response.send_message(embed=discord.Embed(description=f"Error deleting instance: {e}", color=0xff0000))
 
 @bot.tree.command(name="help", description="Shows the help message")
 async def help_command(interaction: discord.Interaction):
