@@ -447,7 +447,7 @@ def generate_random_port():
     return random.randint(1025, 65535)
 
 async def create_server_task(interaction):
-    await interaction.response.send_message(embed=discord.Embed(description="### 🧊 Creating Your Vps Waiting, Powerd by Root@Gh.dev.exe", color=0x00ff00))
+    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by [hk-i9](https://discord.gg/gFgZysYp)**", color=0x00ff00))
     userid = str(interaction.user.id)
     if count_user_servers(userid) >= SERVER_LIMIT:
         await interaction.followup.send(embed=discord.Embed(description="```Error: Instance Limit-reached```", color=0xff0000))
@@ -476,19 +476,15 @@ async def create_server_task(interaction):
     if ssh_session_line:
         await interaction.user.send(embed=discord.Embed(description=f"### Successfully created Instance\nSSH Session Command: ```{ssh_session_line}```\nOS: Ubuntu 22.04\nPassword: root", color=0x00ff00))
         add_to_database(userid, container_id, ssh_session_line)
-        await interaction.followup.send(embed=discord.Embed(description="### 🔍Successfully Installed Vps, Check your Dm Details. ", color=0x00ff00))
+        await interaction.followup.send(embed=discord.Embed(description="✅ **VPS created successfully. Check your DM for details.**", color=0x00ff00))
     else:
         await interaction.followup.send(embed=discord.Embed(description="### Something went wrong or the Instance is taking longer than expected. If this problem continues, Contact Support.", color=0xff0000))
         subprocess.run(["docker", "kill", container_id])
         subprocess.run(["docker", "rm", container_id])
 
-@bot.tree.command(name="Vps-Deploy", description="Creates a new Instance with Ubuntu 22.04")
+@bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
 async def deploy_ubuntu(interaction: discord.Interaction):
     await create_server_task(interaction)
-    userid = str(interaction.user.id)
-    if userid not in whitelist_ids:
-        await interaction.response.send_message(embed=discord.Embed(description="You do not have permission to use this command.", color=0xff0000))
-        return
 
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
 #async def deploy_ubuntu(interaction: discord.Interaction):
@@ -548,7 +544,7 @@ async def execute_command(command):
     stdout, stderr = await process.communicate()
     return stdout.decode(), stderr.decode()
 
-PUBLIC_IP = '222.98.68.29'
+PUBLIC_IP = '127.22.99.11'
 
 async def capture_output(process, keyword):
     while True:
@@ -624,26 +620,6 @@ async def remove_server(interaction: discord.Interaction, container_name: str):
     except subprocess.CalledProcessError as e:
         await interaction.response.send_message(embed=discord.Embed(description=f"Error removing instance: {e}", color=0xff0000))
 
-@bot.tree.command(name="delvps", description="Remove an Instance")
-@app_commands.describe(container_name="The name/ssh-command of your Instance")
-async def remove_server(interaction: discord.Interaction, container_name: str):
-    await interaction.response.defer()
-    userid = str(interaction.user.id)
-    container_id = get_container_id_from_database(userid, container_name)
-
-    if not container_id:
-        await interaction.response.send_message(embed=discord.Embed(description="### No Instance found for your user with that name.", color=0xff0000))
-        return
-
-    try:
-        subprocess.run(["docker", "stop", container_id], check=True)
-        subprocess.run(["docker", "rm", container_id], check=True)
-
-        remove_from_database(container_id)
-
-        await interaction.response.send_message(embed=discord.Embed(description=f"Instance '{container_name}' delete vps successfully.", color=0x00ff00))
-    except subprocess.CalledProcessError as e:
-        await interaction.response.send_message(embed=discord.Embed(description=f"Error deleting instance: {e}", color=0xff0000))
 
 @bot.tree.command(name="help", description="Shows the help message")
 async def help_command(interaction: discord.Interaction):
@@ -660,7 +636,8 @@ async def help_command(interaction: discord.Interaction):
     embed.add_field(name="/bal", value="Check Your Balance.", inline=False)
     embed.add_field(name="/renew", value="Renew The VPS.", inline=False)
     embed.add_field(name="/earncredit", value="earn the credit.", inline=False)
-    embed.add_field(name="/delvps", value="delete vps (admin only)", inline=False)
+    embed.add_field(name="/delvps", value="delete vps user.", inline=False)
+    embed.add_field(name="/node_admin", value="admin nodes.", inline=False)
     await interaction.response.send_message(embed=embed)
 
 
