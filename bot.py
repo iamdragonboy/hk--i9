@@ -482,10 +482,14 @@ async def create_server_task(interaction):
         subprocess.run(["docker", "kill", container_id])
         subprocess.run(["docker", "rm", container_id])
 
-@bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
+@bot.tree.command(name="deploy-ubuntu", description="Creates a new Instance with Ubuntu 22.04")
 async def deploy_ubuntu(interaction: discord.Interaction):
     await create_server_task(interaction)
-
+     userid = str(interaction.user.id)
+    if userid not in whitelist_ids:
+        await interaction.response.send_message(embed=discord.Embed(description="You do not have permission to use this command.", color=0xff0000))
+        return
+        
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
 #async def deploy_ubuntu(interaction: discord.Interaction):
 #    await create_server_task_debian(interaction)
