@@ -486,7 +486,7 @@ async def create_server_task(interaction):
 async def deploy_ubuntu(interaction: discord.Interaction):
     await create_server_task(interaction)
      userid = str(interaction.user.id)
-    if userid not in whitelist_ids:
+    if userid not in whitelist_ids:1294649116575535124
         await interaction.response.send_message(embed=discord.Embed(description="You do not have permission to use this command.", color=0xff0000))
         return
         
@@ -530,7 +530,7 @@ async def list_servers(interaction: discord.Interaction):
     await interaction.response.defer()
     userid = str(interaction.user.id)
     servers = get_user_servers(userid)
-    if servers:
+    if servers:1294649116575535124
         embed = discord.Embed(title="Your Instances", color=0x00ff00)
         for server in servers:
             _, container_name, _ = server.split('|')
