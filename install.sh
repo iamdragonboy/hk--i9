@@ -31,12 +31,12 @@ fi
 echo "Key verified successfully. Proceeding with setup..."
 
 # Clone the repository
-REPO_URL="https://github.com/Gamerzhacker/hk-i9.git"
+REPO_URL="https://github.com/Gamerzhacker/hk--i9.git"
 echo "Cloning the repository..."
 git clone "$REPO_URL" || { echo "Failed to clone repository."; exit 1; }
 
 # Navigate into the cloned directory
-cd hk-i9 || { echo "Repository folder not found."; exit 1; }
+cd hk--i9 || { echo "Repository folder not found."; exit 1; }
 
 # Prompt for Bot Token
 read -p "Enter your Bot Token: " BOT_TOKEN
